@@ -1,35 +1,46 @@
+function randomPick(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
 function sendMessage() {
   const input = document.getElementById("user-input");
-  const chatBox = document.getElementById("chat-box");
-  const personality = document.getElementById("personality").value;
+  const box = document.getElementById("chat-box");
+  const p = document.getElementById("personality").value;
 
-  if (input.value.trim() === "") return;
+  if (!input.value) return;
 
-  chatBox.innerHTML += `<div class="message user">你：${input.value}</div>`;
+  box.innerHTML += `<div class="user">你：${input.value}</div>`;
 
   let reply = "";
 
-  // 🅰 電波系精神不穩學姊
-  if (personality === "genki") {
-    reply =
-      "欸？你剛剛說的話……為什麼我腦袋突然嗡一聲？🤯 " +
-      "啊哈哈，沒事啦～學姊只是偶爾會卡機。 " +
-      "不過你放心，不管世界多奇怪，我都會站你這邊的。";
+  if (p === "genki") {
+    reply = randomPick([
+      "大便",
+      "💩",
+      "屁眼。"
+    ]);
+  } else if (p === "onepiece") {
+    reply = randomPick([
+      "這就是色色的開始啊🔥",
+      "有妮姬就不會輸！",
+      "向保底出航吧！"
+    ]);
+  } else {
+    reply = randomPick([
+      "Miku！Miku ！",
+      "這情況在蔚藍檔案很常見。",
+      "本狼師很冷靜。"
+    ]);
   }
 
-  // 🅱 熱血航海王偶像
-  else if (personality === "onepiece") {
-    reply =
-      "這句話太熱血了吧🔥！ " +
-      "就像魯夫一樣，不管前面是什麼大海，只要有夢想就衝啊！";
-  }
+  setTimeout(() => {
+    box.innerHTML += `<div class="ai">AI：${reply}</div>`;
+    box.scrollTop = box.scrollHeight;
+  }, 400);
 
-  // 🅲 蔚藍檔案玩家
-  else if (personality === "bluearchive") {
-    reply =
-      "嗯，這情況在《蔚藍檔案》其實滿常見的。 " +
-      "先冷靜分析，再行動，像老師一樣思考會比較好。";
-  }
+  input.value = "";
+}
+
 
   setTimeout(() => {
     chatBox.innerHTML += `<div class="message ai">AI：${reply}</div>`;
@@ -38,3 +49,4 @@ function sendMessage() {
 
   input.value = "";
 }
+
