@@ -10,24 +10,20 @@ body {
   background: white;
   padding: 15px;
   border-radius: 10px;
+  text-align: center;
 }
 
-select {
+select, input, button {
   width: 100%;
   padding: 8px;
-  margin-bottom: 10px;
+  margin: 5px 0;
 }
 
 #chat-box {
   height: 300px;
-  overflow-y: auto;
   border: 1px solid #ddd;
   padding: 10px;
-  margin-bottom: 10px;
-}
-
-.message {
-  margin: 6px 0;
+  overflow-y: auto;
 }
 
 .user {
@@ -40,15 +36,3 @@ select {
   color: green;
 }
 
-.input-area {
-  display: flex;
-}
-
-input {
-  flex: 1;
-  padding: 8px;
-}
-
-button {
-  padding: 8px;
-}
